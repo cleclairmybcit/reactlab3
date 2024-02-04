@@ -4,7 +4,10 @@ import { uppercase } from "../../helpers/stringHelpers";
 import { useState } from "react";
 
 export function Header({
-    assignments, setAssignments}: {assignments: Assignment[]; 
+    assignments, 
+    setAssignments
+  }: {
+    assignments: Assignment[]; 
     setAssignments: React.Dispatch<React.SetStateAction<Assignment[]>>;
   }) {
   

@@ -20,13 +20,20 @@ export function Assignments({
 
         <div>
           <p className={styles.textPurple}>Completed Assignments</p>
-          <span>{completed} of {assignments.length}</span>
+          <span>{assignments.filter(assignment => assignment.completed === true).length} of {assignments.length}</span>
         </div>
       </header>
 
       <div className={styles.list}>
         {assignments.map((assignment) => (
-          <Assignment key={assignment.id} assignment={assignment} assignments={assignments} setAssignments={setAssignments} completed={completed} setCompleted={setCompleted} />
+          <Assignment 
+            key={assignment.id}
+            assignment={assignment}
+            assignments={assignments}
+            setAssignments={setAssignments}
+            completed={completed}
+            setCompleted={setCompleted}
+          />
         ))}
       </div>
     </section>
