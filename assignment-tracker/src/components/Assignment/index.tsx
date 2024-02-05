@@ -18,13 +18,14 @@ export function Assignment({
 
   const handleDelete = () => {
     const updatedAssignments = assignments.filter((a) => a.id !== assignment.id);
+    for (let j = 0; j < updatedAssignments.length; j++) {updatedAssignments[j].id = j;};
     setAssignments(updatedAssignments);
+    setCompleted(completed);
   };
   
   const handleToggleCompletion = () => {
-    const updatedCompletedCount = assignment.completed ? completed - 1 : completed + 1;
-    setCompleted(updatedCompletedCount);
     assignment.completed = !assignment.completed;
+    setCompleted(assignments.filter(assignment => assignment.completed === true).length);
   };
 
   return (
