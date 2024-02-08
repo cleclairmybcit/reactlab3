@@ -3,32 +3,18 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { uppercase } from "../../helpers/stringHelpers";
 import { useState } from "react";
 
-export function Header({
-    assignments, 
-    setAssignments
-  }: {
-    assignments: Assignment[]; 
-    setAssignments: React.Dispatch<React.SetStateAction<Assignment[]>>;
-  }) {
-  
-  const [inputAssignment, setInputAssignment] = useState('');
-  const handleInputChange = (e: any) => {
-    setInputAssignment(e.target.value);  
+export function Header({tasks, setTasks}: Tasks) {
+  const [value, setValue] = useState('');
+  const disabled = !value.trim();
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);  
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (inputAssignment.trim()) {
-      const newAssignment: Assignment = {
-        id: assignments.length + 1,
-        title: inputAssignment,
-        completed: false,
-      };
-
-      setAssignments([...assignments, newAssignment]);
-      setInputAssignment('');
-    }
+    const newTask: Task = {title: value, done: false};
+    setTasks([...tasks, newTask]);
+    setValue('');
   };
 
   return (
@@ -38,14 +24,11 @@ export function Header({
       <form className={styles.newAssignmentForm} onSubmit={handleSubmit}>
         <input
           type="text"
-          value={inputAssignment}
+          value={value}
           onChange={handleInputChange}
           placeholder="Add a new assignment"
         />
-        <button 
-          type="submit" 
-          disabled={!inputAssignment.trim()}
-        >
+        <button type="submit" disabled={disabled}>
           Create <AiOutlinePlusCircle size={20} />
         </button>
       </form>

@@ -3,17 +3,11 @@ import { Assignments } from "./components/Assignments";
 import { useState } from "react";
 
 function App() {
-  const [myAssignments, setAssignments] = useState<Assignment[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   return (
     <>
-      <Header
-        assignments={myAssignments}
-        setAssignments={setAssignments}
-      />
-      <Assignments 
-        assignments={myAssignments}
-        setAssignments={setAssignments}
-      />
+      <Header tasks={tasks} setTasks={setTasks} />
+      <Assignments tasks={tasks} setTasks={setTasks} />
     </>
   );
 }
