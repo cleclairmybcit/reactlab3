@@ -14,7 +14,7 @@ export function Assignment({i, tasks, setTasks}: Tasks) {
       <button className={styles.checkContainer} onClick={toggle}>
         {task.done ? <div><BsFillCheckCircleFill/></div> : <div />}
       </button>
-      <p className={task.done ? styles.textCompleted : undefined}>{task.title}</p>
+      <p className={task.done? styles.textCompleted:undefined}>{task.title}</p>
       <button className={styles.deleteButton} onClick={del}>
         <TbTrash size={20} />
       </button>
