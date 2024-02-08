@@ -7,10 +7,7 @@ export function Assignments({tasks, setTasks}: Tasks) {
   return (
     <section className={styles.assignments}>
       <header className={styles.header}>
-        <div>
-          <p>Created Assignments</p>
-          <span>{total}</span>
-        </div>
+        <div><p>Created Assignments</p><span>{total}</span></div>
         <div>
           <p className={styles.textPurple}>Completed Assignments</p>
           <span>{done} of {total}</span>
